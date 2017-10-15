@@ -2,15 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
 
 <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="1195.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -84,21 +84,6 @@
                </font>
             </Label>
             <PasswordField alignment="CENTER" layoutX="230.0" layoutY="242.0" prefHeight="36.0" prefWidth="339.0" promptText="********************" />
-            <CheckBox layoutX="230.0" layoutY="302.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" text=" Admin">
-               <font>
-                  <Font name="Times New Roman Bold" size="17.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="353.0" layoutY="302.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" text=" Faculty">
-               <font>
-                  <Font name="Times New Roman Bold" size="17.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="480.0" layoutY="302.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" text=" Student">
-               <font>
-                  <Font name="Times New Roman Bold" size="17.0" />
-               </font>
-            </CheckBox>
             <Button layoutX="294.0" layoutY="427.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="242.0" text="Create Account">
                <font>
                   <Font name="Times New Roman Bold" size="25.0" />
@@ -109,6 +94,24 @@
                   <Font name="Sitka Text Italic" size="18.0" />
                </font>
             </Label>
+            <RadioButton layoutX="230.0" layoutY="308.0" mnemonicParsing="false" text="Admin">
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="or" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="357.0" layoutY="308.0" mnemonicParsing="false" text="Faculty" toggleGroup="$or">
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="481.0" layoutY="308.0" mnemonicParsing="false" text="Student" toggleGroup="$or">
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+            </RadioButton>
          </children>
       </Pane>
    </children>
