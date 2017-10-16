@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="AP-Project-Try-1.jnlp">
+  <information>
+    <title>AP-Project-Try-1</title>
+    <vendor>kaust</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="AP-Project-Try-1.jar" size="1324958" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="AP-Project-Try-1" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="ap.project.pkgtry.pkg1.APProjectTry1"  name="AP-Project-Try-1" />
+  <update check="always"/>
+</jnlp>
