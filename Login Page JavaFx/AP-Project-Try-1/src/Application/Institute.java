@@ -34,6 +34,43 @@ public class Institute implements Serializable {
     {
         users.add(e);
     }
+    public User getUser(int i)
+    {
+        return users.get(i);
+    }
+    public boolean isStudent(User e)
+    {
+        if ( e.getClass().getName().equals("Student") )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public boolean isFaculty(User e)
+    {
+        if ( e.getClass().getName().equals("Faculty") )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public boolean isAdmin(User e)
+    {
+        if ( e.getClass().getName().equals("Admin") )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public void ShowUser()
     {
         for ( int i=0; i<users.size(); i++ )

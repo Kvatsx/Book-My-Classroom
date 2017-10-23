@@ -53,6 +53,18 @@ public class New_LoginPageController implements Initializable {
             Exc2.setVisible(false);
             System.out.println(index);
             iiitd.ShowUser();
+            if ( iiitd.isStudent(iiitd.getUser(index)) )
+            {
+                // Start Student Page
+            }
+            else if ( iiitd.isFaculty(iiitd.getUser(index)) )
+            {
+                // Start Faculty Page
+            }
+            else
+            {
+                
+            }
         }
         catch(WrongCredentials e) {
             Exc2.setVisible(true);
