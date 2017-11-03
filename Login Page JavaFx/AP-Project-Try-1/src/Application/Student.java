@@ -10,10 +10,17 @@ package Application;
  * @author Kaustav Vats (2016048)
  */
 public class Student extends User {
+    private TimeTable mytimetable;
     
     public Student(String name, String id, String pw)
     {
         super(name,id,pw);
+        mytimetable = null;
+    }
+    
+    public void addTimeTable(TimeTable tt)
+    {
+        this.mytimetable = tt;
     }
     
     @Override
@@ -26,5 +33,10 @@ public class Student extends User {
     public void CancelRoomBooking(String roomno, String date)
     {
         // Need to implement.
+    }
+    
+    public void addCourse(Course c)
+    {
+        
     }
 }

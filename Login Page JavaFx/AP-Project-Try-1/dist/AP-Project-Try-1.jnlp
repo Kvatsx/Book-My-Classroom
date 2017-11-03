@@ -8,11 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="AP-Project-Try-1.jar" size="1341163" download="eager" />
+    <jar href="AP-Project-Try-1.jar" size="1363135" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="AP-Project-Try-1" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="ap.project.pkgtry.pkg1.APProjectTry1"  name="AP-Project-Try-1" />
+  <jfx:javafx-desc  width="800" height="600" main-class="XMLs.XMLMain"  name="AP-Project-Try-1" />
   <update check="always"/>
 </jnlp>

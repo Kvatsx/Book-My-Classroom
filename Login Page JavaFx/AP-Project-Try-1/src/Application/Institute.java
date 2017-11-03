@@ -8,7 +8,6 @@ package Application;
 import java.io.*;
 import java.util.*;
 import MyExceptions.*;
-import ap.project.pkgtry.pkg1.*;
 /**
  *
  * @author Kaustav Vats (2016048)
@@ -30,6 +29,21 @@ public class Institute implements Serializable {
     {
         return this.admin;
     }
+    public void PrintCourses()
+    {
+        System.out.println("Printing all Courses");
+        for (Course course : courses) {
+            if ( course != null )
+            {
+                System.out.println(course.getCode()+" "+course.getName());
+            }
+        }
+        System.out.println("Done");
+    }
+    public ArrayList<Course> getCourses()
+    {
+        return this.courses;
+    }
     public void addUser(User e)
     {
         users.add(e);
@@ -40,7 +54,8 @@ public class Institute implements Serializable {
     }
     public boolean isStudent(User e)
     {
-        if ( e.getClass().getName().equals("Student") )
+//        System.out.println(e.getClass().getName().equals("Application.Student")+" "+e.getClass().getName());
+        if ( e.getClass().getName().equals("Application.Student") )
         {
             return true;
         }
@@ -51,7 +66,7 @@ public class Institute implements Serializable {
     }
     public boolean isFaculty(User e)
     {
-        if ( e.getClass().getName().equals("Faculty") )
+        if ( e.getClass().getName().equals("Application.Faculty") )
         {
             return true;
         }
@@ -62,7 +77,7 @@ public class Institute implements Serializable {
     }
     public boolean isAdmin(User e)
     {
-        if ( e.getClass().getName().equals("Admin") )
+        if ( e.getClass().getName().equals("Application.Admin") )
         {
             return true;
         }
@@ -86,6 +101,29 @@ public class Institute implements Serializable {
     public void addCourse(Course e)
     {
         courses.add(e);
+    }
+    public Course SearchCourse(String code)
+    {
+        for ( int i=0; i<courses.size(); i++ )
+        {
+//            System.out.println("code: "+courses.get(i).getCode()+" Parameter "+code);
+            if ( courses.get(i).getCode().equals(code) )
+            {
+                return courses.get(i);
+            }
+        }
+        return null;
+    }
+    public Room SearchRoom(String roomno)
+    {
+        for ( int i=0; i<rooms.size(); i++ )
+        {
+            if ( rooms.get(i).getRoomNo().equals(roomno) )
+            {
+                return rooms.get(i);
+            }
+        }
+        return null;
     }
     public int Validate_Login(String id, String pw) throws WrongCredentials
     {

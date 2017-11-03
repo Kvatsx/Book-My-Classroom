@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="893.0" prefWidth="1310.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="893.0" prefWidth="1310.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XMLs.AdminController">
    <children>
       <ImageView fitHeight="105.0" fitWidth="556.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,12 +23,12 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3fada8" height="22.0" layoutY="105.0" stroke="#3fada8" strokeType="INSIDE" width="1310.0" />
-      <Button layoutX="1201.0" layoutY="34.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="83.0" text="Logout" textFill="#3fada8">
+      <Button fx:id="logout" layoutX="1201.0" layoutY="34.0" mnemonicParsing="false" onAction="#LogoutAction" prefHeight="38.0" prefWidth="83.0" text="Logout" textFill="#3fada8">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <Label fx:id="welcome" layoutX="655.0" layoutY="28.0" prefHeight="51.0" prefWidth="516.0" text="Welcome User" textFill="#4d4d4d">
+      <Label fx:id="user_name" layoutX="655.0" layoutY="28.0" prefHeight="51.0" prefWidth="516.0" text="Welcome User" textFill="#4d4d4d">
          <font>
             <Font name="Segoe UI" size="36.0" />
          </font>

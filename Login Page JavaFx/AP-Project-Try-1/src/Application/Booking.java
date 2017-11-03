@@ -11,29 +11,23 @@ import java.io.*;
  * @author Kaustav Vats (2016048)
  */
 public class Booking implements Serializable {
-    private final Room room;
-    private final double Start;
-    private final double End;
-    private final String Date;
+    private Room room;
+    private String time;
+    private String Date;
     
-    public Booking(Room r, double s, double e, String d)
+    public Booking(Room r, String t, String d)
     {
         this.room = r;
-        this.Start = s;
-        this.End = e;
+        this.time = t;
         this.Date = d;
     }
     public Room getRoom()
     {
         return this.room;
     }
-    public double getStartTime()
+    public String getTime()
     {
-        return this.Start;
-    }
-    public double getEndTime()
-    {
-        return this.End;
+        return this.time;
     }
     public int getDay()
     {

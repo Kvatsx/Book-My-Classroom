@@ -5,11 +5,14 @@
  */
 package Application;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Kaustav Vats (2016048)
  */
 public class Admin extends User{
+    public static ArrayList<Booking> bookings = new ArrayList<Booking>();
     
     public Admin(String name, String id, String pw)
     {
@@ -25,5 +28,14 @@ public class Admin extends User{
     public void CancelRoomBooking(String roomno, String date)
     {
         // Need to implement.
+    }
+    public void addBooking(Booking e)
+    {
+        bookings.add(e);
+    }
+    public boolean SearchBooking(String r, String d, String t)
+    {
+//        for
+        return true;
     }
 }
