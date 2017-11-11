@@ -52,6 +52,18 @@ public class Institute implements Serializable {
     {
         return users.get(i);
     }
+    public User getUser(String id)
+    {
+        for ( int i=0; i<users.size(); i++ )
+        {
+            if ( users.get(i).getId().equals(id) )
+            {
+                return users.get(i);
+            }
+        }
+        System.out.println("User not Found with this id: " + id + ", Null");
+        return null;
+    }
     public boolean isStudent(User e)
     {
 //        System.out.println(e.getClass().getName().equals("Application.Student")+" "+e.getClass().getName());
@@ -102,12 +114,12 @@ public class Institute implements Serializable {
     {
         courses.add(e);
     }
-    public Course SearchCourse(String code)
+    public Course SearchCourse(String name)
     {
         for ( int i=0; i<courses.size(); i++ )
         {
 //            System.out.println("code: "+courses.get(i).getCode()+" Parameter "+code);
-            if ( courses.get(i).getCode().equals(code) )
+            if ( courses.get(i).getName().equals(name) )
             {
                 return courses.get(i);
             }

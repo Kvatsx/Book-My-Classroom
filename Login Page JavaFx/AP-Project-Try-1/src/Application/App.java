@@ -168,9 +168,12 @@ public class App {
         {
             String[] Brr = Arr.get(i);
 //            elements.add(i-1, Brr[0]+"\n"+"Course Name: "+Brr[1]+"\n"+"Course Code: "+Brr[2]+"\n"+"Instructor: "+Brr[3]+"\n"+"Credits: "+Brr[4]+"\n"+"Acronym: "+Brr[5]+"\n"+"Monday Time: "+Brr[6]+"\n"+"Tuesday Time: "+Brr[7]+"\n"+"Wednesday Time: "+Brr[8]+"\n"+"Thursday Time: "+Brr[9]+"\n"+"Friday Time: "+Brr[10]+"\n"+"\n");
-            Course c = iiitd.SearchCourse(Brr[2]);
+//            System.out.println(Brr[1]);
+            Course c = iiitd.SearchCourse(Brr[1]);
 //            System.out.println("Type of Courses "+Brr[0]);
             c.setType(Brr[0]);
+            c.setAcronym(Brr[5]);
+            c.setCredit(Brr[4]);
 //            System.out.println("Brr[2] "+Brr[2]);
 //            System.out.println("Course Mil gaya "+c.getCode());
             if ( Brr[6].length() > 4 )
@@ -205,8 +208,21 @@ public class App {
                 c.addTiming(4, tmp[0], tmp[1]);
             }
             
-            iiitd.addCourse(c);
+//            iiitd.addCourse(c);
         }
+        App.serialize(iiitd);
+    }
+    public void makeStudent() throws IOException, ClassNotFoundException
+    {
+        Institute iiitd = App.deserialize();
+        Student student = (Student)iiitd.getUser("s@iiitd.ac.in");
+        TimeTable tt = new TimeTable();
+        tt.addCourse(iiitd.SearchCourse("Advanced Programming"));
+        tt.addCourse(iiitd.SearchCourse("Discrete Mathematics"));
+        tt.addCourse(iiitd.SearchCourse("Computer Organization"));
+        tt.addCourse(iiitd.SearchCourse("Maths-III"));
+        tt.addCourse(iiitd.SearchCourse("Introduction to Psychology"));
+        student.addTimeTable(tt);
         App.serialize(iiitd);
     }
     
@@ -222,9 +238,10 @@ public class App {
         IIITD.addUser(new Faculty("Faculty Testing","f@iiitd.ac.in","f"));
         IIITD.addUser(new Admin("Admin Testing","a@iiitd.ac.in","a"));
         app.serialize(IIITD);
-        System.out.println("Serialize Done");
+        System.out.println("Serialize Done on 11/11/17 3:19PM");
         app.allCourse();
         app.makeRooms();
         app.addtimingsinCourses();
+        app.makeStudent();
     }
 }

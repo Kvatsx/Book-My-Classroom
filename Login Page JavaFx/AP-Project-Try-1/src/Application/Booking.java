@@ -14,12 +14,16 @@ public class Booking implements Serializable {
     private Room room;
     private String time;
     private String Date;
+    private String Reason;
+    private String Status;
     
-    public Booking(Room r, String t, String d)
+    public Booking(Room r, String t, String d,String rea)
     {
         this.room = r;
         this.time = t;
         this.Date = d;
+        this.Reason = rea;
+        this.Status = "Pending";
     }
     public Room getRoom()
     {
@@ -28,6 +32,22 @@ public class Booking implements Serializable {
     public String getTime()
     {
         return this.time;
+    }
+    public String getReason()
+    {
+        return this.Reason;
+    }
+    public String getStatus()
+    {
+        return this.Status;
+    }
+    public void Book()
+    {
+        this.Status = "Booked";
+    }
+    public void Reject()
+    {
+        this.Status = "Rejected";
     }
     public int getDay()
     {
@@ -43,5 +63,9 @@ public class Booking implements Serializable {
     {
         String year = Date.substring(6, 10);
         return Integer.parseInt(year);
+    }
+    public String toString()
+    {
+        return "Room: "+room.getRoomNo()+"\n"+"Time: "+time+"\n"+"Date: "+Date+"\n"+"Reason: "+Reason+"\n"+"Status: "+Status+"\n";
     }
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class Admin extends User{
     public static ArrayList<Booking> bookings = new ArrayList<Booking>();
+    public static ArrayList<Booking> request = new ArrayList<Booking>();
     
     public Admin(String name, String id, String pw)
     {
@@ -37,5 +38,9 @@ public class Admin extends User{
     {
 //        for
         return true;
+    }
+    public void addRequest(Booking e)
+    {
+        request.add(e);
     }
 }

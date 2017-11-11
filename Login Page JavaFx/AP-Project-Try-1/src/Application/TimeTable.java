@@ -22,6 +22,10 @@ public class TimeTable implements Serializable {
     {
         Courses.add(c);
     }
+    public ArrayList<Course> getCourse()
+    {
+        return this.Courses;
+    }
     public boolean Search()
     {
         // Need to implement to search for a course on basis of time or classrooom.
