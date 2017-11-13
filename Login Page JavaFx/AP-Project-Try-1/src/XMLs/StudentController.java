@@ -27,7 +27,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.geometry.Insets;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * FXML Controller class
@@ -59,9 +63,13 @@ public class StudentController implements Initializable {
     @FXML
     private TextArea reason;
     @FXML
-    private Button submit_button;
+    private ListView<String> room_availability;
+    @FXML
+    private Button book_room;
     @FXML
     private Button add_course;
+    @FXML
+    private Button cancel_button;
     @FXML
     private TableView<Course> searchcoursetable;
 //    @FXML
@@ -84,10 +92,36 @@ public class StudentController implements Initializable {
     private TableColumn<Course, String> thursday;
     @FXML
     private TableColumn<Course, String> friday;
+    @FXML
+    private HBox hbox1;
+    @FXML
+    private HBox hbox2;
+    @FXML
+    private HBox hbox3;
+    @FXML
+    private HBox hbox4;
+    @FXML
+    private HBox hbox5;
+    @FXML
+    private TableView<Booking> past_bookings;
+    @FXML
+    private TableColumn<Booking, String> room;
+    @FXML
+    private TableColumn<Booking, String> dates;
+    @FXML
+    private TableColumn<Booking, String> days;
+    @FXML
+    private TableColumn<Booking, String> datecol;
+    @FXML
+    private TableColumn<Booking, String> time;
+    @FXML
+    private TableColumn<Booking, String> reasoncol;
+    @FXML
+    private TableColumn<Booking, String> status;
     
     /**
      * Initializes the controller class.
-     */
+     */    
     @FXML
     private void LogoutAction(ActionEvent event) throws IOException {
         System.out.println("Opening Login.fxml After Pressing Logout Button");
@@ -103,6 +137,11 @@ public class StudentController implements Initializable {
     @FXML
     private void SearchButton(ActionEvent event) {
         System.out.println("Searching Available Room on this timings");
+        
+    }
+    public void AvailableRoom() throws IOException, ClassNotFoundException
+    {
+        Institute iiitd = App.deserialize();
         
     }
     @FXML
@@ -137,9 +176,115 @@ public class StudentController implements Initializable {
             addItems();
         }
     }
-    public void UpdateTimeTable()
+    public void UpdateTimeTable() throws IOException, ClassNotFoundException
     {
+        Institute iiitd = App.deserialize();
+        Student u = (Student)iiitd.getUser(user.getId());
+        TimeTable tt = u.getTimeTable();
+        tt.UpdateDailyArrays();
+//        ObservableList<String> elements = FXCollections.observableArrayList();
         
+        Label monday = new Label("Monday");
+        monday.setFont(new Font("Tahoma", 18));
+        monday.setTextFill(Color.web("#3fada8"));
+        monday.setMinWidth(105);
+//        monday.setMaxWidth(40);
+        hbox1.getChildren().add(monday);
+        hbox1.setPadding(new Insets(1));
+        
+        Label tuesday = new Label("Tuesday");
+        tuesday.setFont(new Font("Tahoma", 18));
+        tuesday.setTextFill(Color.web("#3fada8"));
+        tuesday.setMinWidth(105);
+//        monday.setMaxWidth(40);
+        hbox2.getChildren().add(tuesday);
+        hbox2.setPadding(new Insets(1));
+        
+        Label wednesday = new Label("Wednesday");
+        wednesday.setFont(new Font("Tahoma", 18));
+        wednesday.setTextFill(Color.web("#3fada8"));
+        wednesday.setMinWidth(105);
+//        monday.setMaxWidth(40);
+        hbox3.getChildren().add(wednesday);
+        hbox3.setPadding(new Insets(1));
+        
+        Label thursday = new Label("Thursday");
+        thursday.setFont(new Font("Tahoma", 18));
+        thursday.setTextFill(Color.web("#3fada8"));
+        thursday.setMinWidth(105);
+//        monday.setMaxWidth(40);
+        hbox4.getChildren().add(thursday);
+        hbox4.setPadding(new Insets(1));
+        
+        Label friday = new Label("Friday");
+        friday.setFont(new Font("Tahoma", 18));
+        friday.setTextFill(Color.web("#3fada8"));
+        friday.setMinWidth(105);
+//        monday.setMaxWidth(40);
+        hbox5.getChildren().add(friday);
+        hbox5.setPadding(new Insets(1));
+        
+        String z1 = "Monday      --> ";
+        for ( int i=0; i<tt.getMonday().size(); i++ )
+        {
+            Label tmp = new Label(tt.getMonday().get(i));
+            tmp.setFont(new Font("Tahoma",16));
+            tmp.setMinWidth(200);
+            tmp.setWrapText(true);
+            hbox1.getChildren().add(tmp);
+            z1 += tt.getMonday().get(i);
+        }
+        
+        String z2 = "Tuesday      --> ";
+        for ( int i=0; i<tt.getTuesday().size(); i++ )
+        {
+            Label tmp = new Label(tt.getTuesday().get(i));
+            tmp.setFont(new Font("Tahoma",16));
+            tmp.setMinWidth(200);
+            tmp.setWrapText(true);
+            hbox2.getChildren().add(tmp);
+            z2 += tt.getTuesday().get(i);
+        }
+        
+        String z3 = "Wednesday --> ";
+        for ( int i=0; i<tt.getWednesday().size(); i++ )
+        {
+            Label tmp = new Label(tt.getWednesday().get(i));
+            tmp.setFont(new Font("Tahoma",16));
+            tmp.setMinWidth(200);
+            tmp.setWrapText(true);
+            hbox3.getChildren().add(tmp);
+            z3 += tt.getWednesday().get(i);
+        }
+        
+        String z4 = "Thursday     --> ";
+        for ( int i=0; i<tt.getThursday().size(); i++ )
+        {
+            Label tmp = new Label(tt.getThursday().get(i));
+            tmp.setFont(new Font("Tahoma",16));
+            tmp.setMinWidth(200);
+            tmp.setWrapText(true);
+            hbox4.getChildren().add(tmp);
+            z4 += tt.getThursday().get(i);
+        }
+        
+        String z5 = "Friday          --> ";
+        for ( int i=0; i<tt.getFriday().size(); i++ )
+        {
+            Label tmp = new Label(tt.getFriday().get(i));
+            tmp.setFont(new Font("Tahoma",16));
+            tmp.setMinWidth(200);
+            tmp.setWrapText(true);
+            hbox5.getChildren().add(tmp);
+            z5 += tt.getFriday().get(i);
+        }
+        
+//        elements.add(z1);
+//        elements.add(z2);
+//        elements.add(z3);
+//        elements.add(z4);
+//        elements.add(z5);
+//        mytimetable.setItems(elements);
     }
     public void UpdateTable(String newValue) throws IOException, ClassNotFoundException
     {
@@ -202,7 +347,7 @@ public class StudentController implements Initializable {
         friday.setCellValueFactory(new PropertyValueFactory<Course, String>("Friday"));
         searchcoursetable.setItems(elements);
     }
-    
+    // My Courses
     public void addItems() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
@@ -215,46 +360,223 @@ public class StudentController implements Initializable {
         }
         current_course_list.setItems(elements);
     }
-    
+    // BookRoom
     @FXML
     public void Submit_room(ActionEvent event) throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
         Room r = iiitd.SearchRoom(room_menu.getValue());
-        System.out.println("Date Picker:- " + date.getValue().toString() );
-        Booking x = new Booking(r, start.getText()+"-"+end.getText(), date.getValue().toString(), reason.getText());
-        ArrayList<Course> c = iiitd.getCourses();
+        Student u = (Student)iiitd.getUser(user.getId());
+//        System.out.println("Date Picker:- " + date.getValue().toString() );
+        
         int num = date.getValue().getDayOfWeek().getValue()-1;
         int month = date.getValue().getMonthValue();
         int day = date.getValue().getDayOfMonth();
-        System.out.println("Num: "+num);
-        boolean flag = true;
-        for ( int i=0; i<c.size(); i++ )
+//        System.out.println("Num: "+num);
+//        System.out.println("month "+month);
+//        System.out.println("day "+day);
+        String lasvegas = "";
+        if ( num == 0 )
         {
-            if ( c.get(i).getRoomOnDay(num).equals(r.getRoomNo()) )
+            lasvegas = "Monday";
+        }
+        if ( num == 1 )
+        {
+            lasvegas = "Tuesday";
+        }
+        if ( num == 2 )
+        {
+            lasvegas = "Wednesday";
+        }
+        if ( num == 3 )
+        {
+            lasvegas = "Thursday";
+        }
+        if ( num == 4 )
+        {
+            lasvegas = "Friday";
+        }
+        if ( num == 5 )
+        {
+            lasvegas = "Saturday";
+        }
+        if ( num == 6 )
+        {
+            lasvegas = "Sunday";
+        }
+        Booking x = new Booking(r, start.getText()+"-"+end.getText(), date.getValue().toString(), lasvegas, reason.getText());
+        
+        boolean flag = true;
+        ArrayList<String> bookings = r.getBookings();
+        System.out.println("Bookings Size "+bookings.size());
+        for (String booking : bookings) 
+        {
+            String[] help = booking.split("\t");
+//            System.out.println(help[0]+" "+help[1]+" "+help[2]);
+//            if ( help[0].equals("Always") )
+//            {
+//               
+//            }
+            if ( help[0].equals("Always") || help[0].equals(date.getValue().toString()) )
             {
-                String timings = c.get(i).getTimeOnDay(num);
-                String s1 = timings.substring(0, 5);
-                String e1 = timings.substring(6, 11);
-                // need to implement time interval overlap check
+                if ( help[1].equals(lasvegas) )
+                {
+                    if (r.isOverlap(help[2],start.getText()+"-"+end.getText()))
+                    {
+                        System.out.println("Time Comparison: "+help[2]+" 2nd Time "+start.getText()+"-"+end.getText());
+                        flag = false;
+                    }
+                }
             }
         }
-        // add one more for loop to check in booked room arraylist.
-        
         if ( flag )
         {
-            user.BookRoom(x);
-            Admin.request.add(x);
+            u.BookRoom(x);
+            r.addBooking(date.getValue().toString()+"\t"+lasvegas+"\t"+start.getText()+"-"+end.getText());
+            iiitd.getAdmin().addRequest(x);
+        }
+        else
+        {
+            Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("Room Booked");
+            a.setHeaderText("Room Already booked for this time");
+            a.setResizable(false);
+            String content = String.format("Please select a different time or different room."+"\n"+x);
+            a.setContentText(content);
+            a.showAndWait();
         }
         App.serialize(iiitd);
-        System.out.println("Total Requests: "+Admin.request.size());
-        for ( int i=0; i<Admin.request.size(); i++ )
-        {
-            System.out.println(Admin.request.get(i));
-        }
+        UpdatePastBookings();
+        UpdateAvailableRoom();
+        System.out.println("Total Requests: ");
+        iiitd.getAdmin().printRequests();
         
     }
+    public void UpdateAvailableRoom() throws IOException, ClassNotFoundException
+    {
+        Institute iiitd = App.deserialize();
+        ObservableList<String> elements = FXCollections.observableArrayList();
+        ArrayList<Room> all_rooms = iiitd.getRooms();
+        for (Room rm : all_rooms) 
+        {
+            ArrayList<String> Monday = new ArrayList<String>();
+            ArrayList<String> Tuesday = new ArrayList<String>();
+            ArrayList<String> Wednesday = new ArrayList<String>();
+            ArrayList<String> Thursday = new ArrayList<String>();
+            ArrayList<String> Friday = new ArrayList<String>();
+            ArrayList<String> Saturday = new ArrayList<String>();
+            ArrayList<String> Sunday = new ArrayList<String>();
+            
+            ArrayList<String> all_bookings = rm.getBookings();
+            for ( String book : all_bookings )
+            {
+                String[] tmp = book.split("\t");
+                if ( tmp[1].equals("Monday") )
+                {
+                    Monday.add("("+tmp[0]+") "+tmp[2]);
+                }
+                else if ( tmp[1].equals("Tuesday") )
+                {
+                    Tuesday.add("("+tmp[0]+") "+tmp[2]);
+                }
+                else if ( tmp[1].equals("Wednesday") )
+                {
+                    Wednesday.add("("+tmp[0]+") "+tmp[2]);
+                }
+                else if ( tmp[1].equals("Thursday") )
+                {
+                    Thursday.add("("+tmp[0]+") "+tmp[2]);
+                }
+                else if ( tmp[1].equals("Friday") )
+                {
+                    Friday.add("("+tmp[0]+") "+tmp[2]);
+                }
+                else if ( tmp[1].equals("Saturday") )
+                {
+                    Saturday.add("("+tmp[0]+") "+tmp[2]);
+                }
+                else if ( tmp[1].equals("Sunday") )
+                {
+                    Sunday.add("("+tmp[0]+") "+tmp[2]);
+                }
+            }
+            Collections.sort(Monday, new TimeCompare());
+            Collections.sort(Tuesday, new TimeCompare());
+            Collections.sort(Wednesday, new TimeCompare());
+            Collections.sort(Thursday, new TimeCompare());
+            Collections.sort(Friday, new TimeCompare());
+            Collections.sort(Saturday, new TimeCompare());
+            Collections.sort(Friday, new TimeCompare());
+            String data = rm.getRoomNo()+"\n"+"SUNDAY:"+"\t";
+            for ( String s : Sunday )
+            {
+                data += s +", ";
+            }
+            data += "\n"+"MONDAY:"+"\t";
+            for ( String s : Monday )
+            {
+                data += s +", ";
+            }
+            data += "\n"+"TUESDAY:"+"\t";
+            for ( String s : Tuesday )
+            {
+                data += s +", ";
+            }
+            data += "\n"+"WEDNESDAY:"+"\t";
+            for ( String s : Wednesday )
+            {
+                data += s +", ";
+            }
+            data += "\n"+"THURSDAY:"+"\t";
+            for ( String s : Thursday )
+            {
+                data += s +", ";
+            }
+            data += "\n"+"FRIDAY:"+"\t";
+            for ( String s : Friday )
+            {
+                data += s +", ";
+            }
+            data += "\n"+"SATURDAY:"+"\t";
+            for ( String s : Saturday )
+            {
+                data += s +", ";
+            }
+            elements.add(data);
+        }
+        room_availability.setItems(elements);
+    }
     
+    public void UpdatePastBookings() throws IOException, ClassNotFoundException
+    {
+        Institute iiitd = App.deserialize();
+        Student u = (Student)iiitd.getUser(user.getId());
+        ArrayList<Booking> b = u.getbookings();
+        ObservableList<Booking> elements = FXCollections.observableArrayList();
+        for (Booking b1 : b) 
+        {
+            elements.add(b1);
+        }
+        room.setCellValueFactory(new PropertyValueFactory<Booking, String>("RoomNo"));
+        datecol.setCellValueFactory(new PropertyValueFactory<Booking, String>("Date"));
+        days.setCellValueFactory(new PropertyValueFactory<Booking, String>("Day"));
+        time.setCellValueFactory(new PropertyValueFactory<Booking, String>("Time"));
+        reasoncol.setCellValueFactory(new PropertyValueFactory<Booking, String>("Reason"));
+        status.setCellValueFactory(new PropertyValueFactory<Booking, String>("Status"));
+        past_bookings.setItems(elements);
+    }
+    @FXML
+    public void Remove_button(ActionEvent event) throws IOException, ClassNotFoundException
+    {
+        Institute iiitd = App.deserialize();
+        Student s = (Student)iiitd.getUser(user.getId());
+        Booking b = past_bookings.getSelectionModel().getSelectedItem();
+        iiitd.getAdmin().RemoveRequest(b);
+        s.RemoveRequest(b);
+        App.serialize(iiitd);
+        UpdatePastBookings();
+        UpdateAvailableRoom();
+    }
     public void ShowallCourses() throws IOException, ClassNotFoundException
     {
         ObservableList<String> elements = FXCollections.observableArrayList();
@@ -277,6 +599,9 @@ public class StudentController implements Initializable {
             addItems();
             ShowallCourses();
             UpdateTable("");
+            UpdateTimeTable();
+            UpdatePastBookings();
+            UpdateAvailableRoom();
         } catch (IOException ex) {
             Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -319,4 +644,17 @@ public class StudentController implements Initializable {
         });
     }    
     
+}
+class TimeCompare implements Comparator<String>{
+    @Override
+    public int compare(String e1, String e2) {
+        String time1 = e1.substring(e1.length()-11, e1.length());
+        String time2 = e2.substring(e2.length()-11, e2.length());
+//        System.out.println(time1+" "+time2);
+        if ( time1.substring(0, 2).compareTo(time2.substring(0, 2)) == 0 )
+        {
+            return time1.substring(3, 5).compareTo(time2.substring(3, 5));
+        }
+        return time1.substring(0, 2).compareTo(time2.substring(0, 2));
+    }
 }

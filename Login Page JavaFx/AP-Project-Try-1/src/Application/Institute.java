@@ -40,6 +40,10 @@ public class Institute implements Serializable {
         }
         System.out.println("Done");
     }
+    public ArrayList<Room> getRooms()
+    {
+        return this.rooms;
+    }
     public ArrayList<Course> getCourses()
     {
         return this.courses;
@@ -171,7 +175,13 @@ public class Institute implements Serializable {
         }
         return Flag;
     }
-    
+    public void printRooms()
+    {
+        for ( int i=0; i<rooms.size(); i++ )
+        {
+            System.out.println(rooms.get(i));
+        }
+    }
     public static void main(String[] args) {
         
     }

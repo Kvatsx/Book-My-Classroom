@@ -75,6 +75,54 @@ public class App {
         }
         return myArr;
     }
+    public void UpdateRoomTimings() throws IOException, ClassNotFoundException
+    {
+        Institute iiitd = App.deserialize();
+        ArrayList<String[]> Arr = App.makett();
+        iiitd.printRooms();
+        for (int i=1; i<Arr.size(); i++) 
+        {
+            String[] e = Arr.get(i);
+            System.out.println("Course Name: "+e[1]);
+//            System.out.println(e[6]);
+            if ( e[6].length() > 3 )
+            {
+                String[] tmp = e[6].split("\\$");
+                System.out.println(tmp[0]+" "+tmp[1]);
+                Room r = iiitd.SearchRoom(tmp[1]);
+                r.addBooking("Always"+"\t"+"Monday"+"\t"+tmp[0]);
+            }
+            if ( e[7].length() > 3 )
+            {
+                String[] tmp = e[7].split("\\$");
+                System.out.println(tmp[0]+" "+tmp[1]);
+                Room r = iiitd.SearchRoom(tmp[1]);
+                r.addBooking("Always"+"\t"+"Tuesday"+"\t"+tmp[0]);
+            }
+            if ( e[8].length() > 3 )
+            {
+                String[] tmp = e[8].split("\\$");
+                System.out.println(tmp[0]+" "+tmp[1]);
+                Room r = iiitd.SearchRoom(tmp[1]);
+                r.addBooking("Always"+"\t"+"Wednesday"+"\t"+tmp[0]);
+            }
+            if ( e[9].length() > 3 )
+            {
+                String[] tmp = e[9].split("\\$");
+                System.out.println(tmp[0]+" "+tmp[1]);
+                Room r = iiitd.SearchRoom(tmp[1]);
+                r.addBooking("Always"+"\t"+"Thursday"+"\t"+tmp[0]);
+            }
+            if ( e[10].length() > 3 )
+            {
+                String[] tmp = e[10].split("\\$");
+                System.out.println(tmp[0]+" "+tmp[1]);
+                Room r = iiitd.SearchRoom(tmp[1]);
+                r.addBooking("Always"+"\t"+"Friday"+"\t"+tmp[0]);
+            }
+        }
+        App.serialize(iiitd);
+    }
     
     public void allCourse() throws IOException, ClassNotFoundException
     {
@@ -238,10 +286,11 @@ public class App {
         IIITD.addUser(new Faculty("Faculty Testing","f@iiitd.ac.in","f"));
         IIITD.addUser(new Admin("Admin Testing","a@iiitd.ac.in","a"));
         app.serialize(IIITD);
-        System.out.println("Serialize Done on 11/11/17 3:19PM");
-        app.allCourse();
+        System.out.println("Serialize Done on 13/11/17 09:26PM");
         app.makeRooms();
+        app.allCourse();
         app.addtimingsinCourses();
         app.makeStudent();
+        app.UpdateRoomTimings();
     }
 }
