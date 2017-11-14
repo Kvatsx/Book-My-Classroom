@@ -32,7 +32,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <PasswordField fx:id="Pw2" alignment="CENTER" layoutX="1004.0" layoutY="271.0" prefHeight="31.0" prefWidth="267.0" promptText="********">
+      <PasswordField fx:id="Pw2" alignment="CENTER" layoutX="1004.0" layoutY="271.0" prefHeight="31.0" prefWidth="267.0" promptText="Password">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></PasswordField>
@@ -51,7 +51,7 @@
             <Image url="@../ap/project/pkgtry/pkg1/Images/Logo.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="31.0" layoutY="163.0" prefHeight="312.0" prefWidth="491.0" style="-fx-background-color: white;">
+      <AnchorPane layoutX="31.0" layoutY="163.0" opacity="0.96" prefHeight="312.0" prefWidth="491.0" style="-fx-background-color: white;">
          <children>
             <TextField fx:id="Name" alignment="CENTER" layoutX="190.0" layoutY="31.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter Your Full Name">
                <font>
@@ -121,7 +121,7 @@
             <DropShadow color="#208a84" height="36.55" radius="17.775" spread="0.12" width="36.55" />
          </effect>
       </AnchorPane>
-      <TextField fx:id="Id2" alignment="CENTER" layoutX="1004.0" layoutY="220.0" prefHeight="31.0" prefWidth="267.0" promptText="abc@iiitd.ac.in">
+      <TextField fx:id="Id2" alignment="CENTER" layoutX="1004.0" layoutY="220.0" prefHeight="31.0" prefWidth="267.0" promptText="Username">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
