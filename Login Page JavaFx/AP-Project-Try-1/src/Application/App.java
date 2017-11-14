@@ -263,7 +263,7 @@ public class App {
     public void makeStudent() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
-        Student student = (Student)iiitd.getUser("s@iiitd.ac.in");
+        Student student = (Student)iiitd.getUser("kaustavvats");
         TimeTable tt = new TimeTable();
         tt.addCourse(iiitd.SearchCourse("Advanced Programming"));
         tt.addCourse(iiitd.SearchCourse("Discrete Mathematics"));
@@ -271,6 +271,16 @@ public class App {
         tt.addCourse(iiitd.SearchCourse("Maths-III"));
         tt.addCourse(iiitd.SearchCourse("Introduction to Psychology"));
         student.addTimeTable(tt);
+        App.serialize(iiitd);
+    }
+    public void makeFaculty() throws IOException, ClassNotFoundException
+    {
+        Institute iiitd = App.deserialize();
+        Faculty faculty = (Faculty)iiitd.getUser("vivekkumar");
+        TimeTable tt = new TimeTable();
+        tt.addCourse(iiitd.SearchCourse("Advanced Programming"));
+        tt.addCourse(iiitd.SearchCourse("Introduction to Psychology"));
+        faculty.addTimeTable(tt);
         App.serialize(iiitd);
     }
     
@@ -282,15 +292,16 @@ public class App {
         IIITD.addUser(admin);
         IIITD.addUser(new Student("Ishaan","ishaan@iiitd.ac.in","ishaanbassi"));
         IIITD.addUser(new Faculty("Bhand","abhi@iiitd.ac.in","bhand"));
-        IIITD.addUser(new Student("Student Testing","s@iiitd.ac.in","s"));
-        IIITD.addUser(new Faculty("Faculty Testing","f@iiitd.ac.in","f"));
-        IIITD.addUser(new Admin("Admin Testing","a@iiitd.ac.in","a"));
+        IIITD.addUser(new Student("Kaustav Vats","kaustavvats","kaustav"));
+        IIITD.addUser(new Faculty("Vivek Kumar","vivekkumar","vivek"));
+        IIITD.addUser(new Admin("Admin","admin","admin"));
         app.serialize(IIITD);
-        System.out.println("Serialize Done on 13/11/17 09:26PM");
+        System.out.println("Serialize Done on 14/11/17 04:33PM");
         app.makeRooms();
         app.allCourse();
         app.addtimingsinCourses();
         app.makeStudent();
+        app.makeFaculty();
         app.UpdateRoomTimings();
     }
 }

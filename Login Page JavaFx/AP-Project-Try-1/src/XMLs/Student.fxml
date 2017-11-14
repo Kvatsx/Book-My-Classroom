@@ -99,11 +99,11 @@
                               <Font name="System Bold" size="23.0" />
                            </font>
                         </Label>
-                        <HBox fx:id="hbox1" alignment="CENTER_LEFT" layoutX="59.0" layoutY="81.0" prefHeight="100.0" prefWidth="1076.0" />
-                        <HBox fx:id="hbox2" alignment="CENTER_LEFT" layoutX="59.0" layoutY="181.0" prefHeight="100.0" prefWidth="1076.0" />
-                        <HBox fx:id="hbox3" alignment="CENTER_LEFT" layoutX="59.0" layoutY="281.0" prefHeight="100.0" prefWidth="1076.0" />
-                        <HBox fx:id="hbox4" alignment="CENTER_LEFT" layoutX="59.0" layoutY="381.0" prefHeight="100.0" prefWidth="1076.0" />
-                        <HBox fx:id="hbox5" alignment="CENTER_LEFT" layoutX="59.0" layoutY="481.0" prefHeight="100.0" prefWidth="1076.0" />
+                        <HBox fx:id="hbox1" alignment="CENTER_LEFT" layoutX="59.0" layoutY="113.0" prefHeight="100.0" prefWidth="1076.0" />
+                        <HBox fx:id="hbox2" alignment="CENTER_LEFT" layoutX="59.0" layoutY="213.0" prefHeight="100.0" prefWidth="1076.0" />
+                        <HBox fx:id="hbox3" alignment="CENTER_LEFT" layoutX="59.0" layoutY="313.0" prefHeight="100.0" prefWidth="1076.0" />
+                        <HBox fx:id="hbox4" alignment="CENTER_LEFT" layoutX="59.0" layoutY="413.0" prefHeight="100.0" prefWidth="1076.0" />
+                        <HBox fx:id="hbox5" alignment="CENTER_LEFT" layoutX="59.0" layoutY="513.0" prefHeight="100.0" prefWidth="1076.0" />
                      </children>
                   </AnchorPane>
                </content>
@@ -128,7 +128,7 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="start" layoutX="250.0" layoutY="300.0" prefHeight="31.0" prefWidth="120.0" promptText="example- 10:30" />
+                        <TextField fx:id="start" alignment="CENTER" layoutX="250.0" layoutY="300.0" prefHeight="31.0" prefWidth="120.0" promptText="00:00" />
                         <Label layoutX="98.0" layoutY="379.0" text="Reason" textFill="#3fada8">
                            <font>
                               <Font name="System Bold" size="17.0" />
@@ -151,7 +151,7 @@
                               <Font name="Nirmala UI Bold" size="22.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="end" layoutX="401.0" layoutY="301.0" prefHeight="31.0" prefWidth="135.0" promptText="example- 11:30" />
+                        <TextField fx:id="end" alignment="CENTER" layoutX="401.0" layoutY="301.0" prefHeight="31.0" prefWidth="135.0" promptText="23:59" />
                         <ListView fx:id="room_availability" layoutX="597.0" layoutY="116.0" prefHeight="535.0" prefWidth="551.0" />
                         <Label layoutX="597.0" layoutY="57.0" text="Room Availability" textFill="#eb2929">
                            <font>

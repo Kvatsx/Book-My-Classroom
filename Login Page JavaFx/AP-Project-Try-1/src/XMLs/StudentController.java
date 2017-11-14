@@ -174,6 +174,7 @@ public class StudentController implements Initializable {
             UpdateTimeTable();
             App.serialize(iiitd);
             addItems();
+            UpdateTimeTable();
         }
     }
     public void UpdateTimeTable() throws IOException, ClassNotFoundException
@@ -189,6 +190,7 @@ public class StudentController implements Initializable {
         monday.setTextFill(Color.web("#3fada8"));
         monday.setMinWidth(105);
 //        monday.setMaxWidth(40);
+        hbox1.getChildren().clear();
         hbox1.getChildren().add(monday);
         hbox1.setPadding(new Insets(1));
         
@@ -197,6 +199,7 @@ public class StudentController implements Initializable {
         tuesday.setTextFill(Color.web("#3fada8"));
         tuesday.setMinWidth(105);
 //        monday.setMaxWidth(40);
+        hbox2.getChildren().clear();
         hbox2.getChildren().add(tuesday);
         hbox2.setPadding(new Insets(1));
         
@@ -205,6 +208,7 @@ public class StudentController implements Initializable {
         wednesday.setTextFill(Color.web("#3fada8"));
         wednesday.setMinWidth(105);
 //        monday.setMaxWidth(40);
+        hbox3.getChildren().clear();
         hbox3.getChildren().add(wednesday);
         hbox3.setPadding(new Insets(1));
         
@@ -213,6 +217,7 @@ public class StudentController implements Initializable {
         thursday.setTextFill(Color.web("#3fada8"));
         thursday.setMinWidth(105);
 //        monday.setMaxWidth(40);
+        hbox4.getChildren().clear();
         hbox4.getChildren().add(thursday);
         hbox4.setPadding(new Insets(1));
         
@@ -220,6 +225,7 @@ public class StudentController implements Initializable {
         friday.setFont(new Font("Tahoma", 18));
         friday.setTextFill(Color.web("#3fada8"));
         friday.setMinWidth(105);
+        hbox5.getChildren().clear();
 //        monday.setMaxWidth(40);
         hbox5.getChildren().add(friday);
         hbox5.setPadding(new Insets(1));
@@ -571,8 +577,10 @@ public class StudentController implements Initializable {
         Institute iiitd = App.deserialize();
         Student s = (Student)iiitd.getUser(user.getId());
         Booking b = past_bookings.getSelectionModel().getSelectedItem();
-        iiitd.getAdmin().RemoveRequest(b);
-        s.RemoveRequest(b);
+        iiitd.getAdmin().removeRequest(b);
+        s.CancelRoomBooking(b);
+        Room r = iiitd.SearchRoom(b.getRoomNo());
+        r.deleteBooking(b.getDate()+"\t"+b.getDay()+"\t"+b.getTime());
         App.serialize(iiitd);
         UpdatePastBookings();
         UpdateAvailableRoom();

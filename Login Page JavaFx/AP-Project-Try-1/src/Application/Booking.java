@@ -27,6 +27,10 @@ public class Booking implements Serializable {
         this.Reason = rea;
         this.Status = "Pending";
     }
+    public String getStatus()
+    {
+        return this.Status;
+    }
     public Room getRoom()
     {
         return this.room;
@@ -50,10 +54,6 @@ public class Booking implements Serializable {
     public String getReason()
     {
         return this.Reason;
-    }
-    public String getStatus()
-    {
-        return this.Status;
     }
     public void Book()
     {

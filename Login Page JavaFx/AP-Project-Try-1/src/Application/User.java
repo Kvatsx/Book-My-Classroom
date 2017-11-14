@@ -61,5 +61,5 @@ public abstract class User implements Serializable {
     }
     public abstract void BookRoom(Booking booking);
     
-    public abstract void CancelRoomBooking(String roomno, String date);
+    public abstract void CancelRoomBooking(Booking booking);
 }

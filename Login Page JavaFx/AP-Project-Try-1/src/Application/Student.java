@@ -41,14 +41,12 @@ public class Student extends User {
     @Override
     public void BookRoom(Booking booking)
     {
-        // Need to implement.
         bookings.add(booking);
     }
-    
     @Override
-    public void CancelRoomBooking(String roomno, String date)
+    public void CancelRoomBooking(Booking booking)
     {
-        // Need to implement.
+        RemoveRequest(booking);
     }
     
     public void addCourse(Course c)
