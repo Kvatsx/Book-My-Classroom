@@ -32,15 +32,15 @@
             </Label>
          </children>
       </AnchorPane>
-      <PasswordField fx:id="Pw2" alignment="CENTER" layoutX="1004.0" layoutY="271.0" prefHeight="31.0" prefWidth="267.0" promptText="Password">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></PasswordField>
       <Button fx:id="Login" alignment="CENTER" contentDisplay="CENTER" layoutX="1071.0" layoutY="343.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="31.0" prefWidth="133.0" text="Login" textAlignment="CENTER" textFill="#3fada8">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <PasswordField fx:id="Pw2" alignment="CENTER" layoutX="1004.0" layoutY="271.0" prefHeight="31.0" prefWidth="267.0" promptText="Password">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></PasswordField>
       <Label fx:id="Exc2" alignment="CENTER" layoutX="992.0" layoutY="172.0" prefHeight="31.0" prefWidth="291.0" style="-fx-background-color: White;" text="Login failed wrong user credentials." textFill="#f20606" visible="false">
          <font>
             <Font name="Sitka Text Bold Italic" size="16.0" />
