@@ -35,6 +35,7 @@ public abstract class User implements Serializable {
     {
         return this.Name+" "+this.Id;
     }
+    // Checks if both users are same or not. If same returns true else false.
     public boolean Validate(String id, String pw)
     {
         if ( this.Id.equals(id) )
@@ -53,13 +54,9 @@ public abstract class User implements Serializable {
             return false;
         }
     }
-    
-    public boolean ViewRoomAvailable(int cap, double start, double end, String date)
-    {
-        // Need to implement.
-        return false;
-    }
+    // Books room and add this objects to their past booking array.
     public abstract void BookRoom(Booking booking);
     
+    // This method removes booking by removing same object from ArrayList<Booking>.
     public abstract void CancelRoomBooking(Booking booking);
 }

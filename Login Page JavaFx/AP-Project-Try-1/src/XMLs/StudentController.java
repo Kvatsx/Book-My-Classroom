@@ -9,6 +9,9 @@ import Application.*;
 import static XMLs.AdminController.currentStage;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -118,6 +121,14 @@ public class StudentController implements Initializable {
     private TableColumn<Booking, String> reasoncol;
     @FXML
     private TableColumn<Booking, String> status;
+    @FXML
+    private TableView<Room> my_room_table;
+    @FXML
+    private TableColumn<Room, String> my_room;
+    @FXML
+    private TableColumn<Room, String> my_capacity;
+    @FXML
+    private Button Search_room;
     
     /**
      * Initializes the controller class.
@@ -128,22 +139,10 @@ public class StudentController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         currentStage = LoginController.currentStage;
         Scene scene = new Scene(root);
-        
         currentStage.setScene(scene);
-//      stage.setResizable(false);
         currentStage.show();
     }
-    // Search Button---> To search Available Room
-    @FXML
-    private void SearchButton(ActionEvent event) {
-        System.out.println("Searching Available Room on this timings");
-        
-    }
-    public void AvailableRoom() throws IOException, ClassNotFoundException
-    {
-        Institute iiitd = App.deserialize();
-        
-    }
+    // Add Selected Course to my Student object.
     @FXML
     public void add_course_button(ActionEvent event) throws IOException, ClassNotFoundException
     {
@@ -177,6 +176,8 @@ public class StudentController implements Initializable {
             UpdateTimeTable();
         }
     }
+    // This method Shows my TimeTable in TimeTable Tab.
+    // By using Each day array that is created in timetable class.
     public void UpdateTimeTable() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
@@ -292,6 +293,7 @@ public class StudentController implements Initializable {
 //        elements.add(z5);
 //        mytimetable.setItems(elements);
     }
+    // This method is used in Course Search algo. This filters all course according to post conditions.
     public void UpdateTable(String newValue) throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
@@ -323,7 +325,7 @@ public class StudentController implements Initializable {
                     String[] s = newPC.get(j).split(" ");
                     for ( int k=0; k<s.length; k++ )
                     {
-                        if ( s[k].toLowerCase().equals(newValue) )
+                        if ( s[k].toLowerCase().contains(newValue) )
                         {
                             System.out.println(s[k].toLowerCase()+" "+newValue);
                             Flag = true;
@@ -343,17 +345,27 @@ public class StudentController implements Initializable {
             System.out.println("All Items Added");
         }
         code.setCellValueFactory(new PropertyValueFactory<Course, String>("Code"));
+        code.setStyle("-fx-alignment: CENTER;");
         credit.setCellValueFactory(new PropertyValueFactory<Course, String>("Credit"));
+        credit.setStyle("-fx-alignment: CENTER;");
         coursename.setCellValueFactory(new PropertyValueFactory<Course, String>("Name"));
+        coursename.setStyle("-fx-alignment: CENTER;");
         instructorname.setCellValueFactory(new PropertyValueFactory<Course, String>("faculty"));
+        instructorname.setStyle("-fx-alignment: CENTER;");
         monday.setCellValueFactory(new PropertyValueFactory<Course, String>("Monday"));
+        monday.setStyle("-fx-alignment: CENTER;");
         tuesday.setCellValueFactory(new PropertyValueFactory<Course, String>("Tuesday"));
+        tuesday.setStyle("-fx-alignment: CENTER;");
         wednesday.setCellValueFactory(new PropertyValueFactory<Course, String>("Wednesday"));
+        wednesday.setStyle("-fx-alignment: CENTER;");
         thursday.setCellValueFactory(new PropertyValueFactory<Course, String>("Thursday"));
+        thursday.setStyle("-fx-alignment: CENTER;");
         friday.setCellValueFactory(new PropertyValueFactory<Course, String>("Friday"));
+        friday.setStyle("-fx-alignment: CENTER;");
         searchcoursetable.setItems(elements);
     }
     // My Courses
+    // This method add user current course to listview.
     public void addItems() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
@@ -366,13 +378,119 @@ public class StudentController implements Initializable {
         }
         current_course_list.setItems(elements);
     }
-    // BookRoom
+    @FXML
+    public void UpdateRoomCapacity(ActionEvent event) throws IOException, ClassNotFoundException
+    {
+        if ( !room_menu.getValue().equals("Nil") )
+        {
+            Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("Error");
+            a.setHeaderText("Wrong Button Pressed.");
+            a.setResizable(false);
+            String content = String.format("Please Press book room.");
+            a.setContentText(content);
+            a.showAndWait();
+        }
+        else
+        {
+            Institute iiitd = App.deserialize();
+            ObservableList<Room> elements = FXCollections.observableArrayList();
+        
+            int num = date.getValue().getDayOfWeek().getValue()-1;
+            int month = date.getValue().getMonthValue();
+            int day = date.getValue().getDayOfMonth();
+            String lasvegas = "";
+            if ( num == 0 )
+            {
+                lasvegas = "Monday";
+            }
+            if ( num == 1 )
+            {
+               lasvegas = "Tuesday";
+            }
+            if ( num == 2 )
+            {
+                lasvegas = "Wednesday";
+            }
+            if ( num == 3 )
+            {
+                lasvegas = "Thursday";
+            }
+            if ( num == 4 )
+            {
+                lasvegas = "Friday";
+            }
+            if ( num == 5 )
+            {
+                lasvegas = "Saturday";
+            }
+            if ( num == 6 )
+            {
+                lasvegas = "Sunday";
+            }
+//        Booking x = new Booking(r, start.getText()+"-"+end.getText(), date.getValue().toString(), lasvegas, reason.getText());
+//        Calendar cal = Calendar.getInstance();
+//        x.setBookingDate(cal.getTime());
+            ArrayList<Room> r = iiitd.getRooms();
+            for ( int i=0; i<r.size(); i++ )
+            {
+                boolean flag = true;
+                ArrayList<String> bookings = r.get(i).getBookings();
+                for (String booking : bookings)
+                {
+                    String[] help = booking.split("\t");
+                    if ( help[0].equals("Always") || help[0].equals(date.getValue().toString()) )
+                    {
+                        if ( help[1].equals(lasvegas) )
+                        {
+                            if (r.get(i).isOverlap(help[2],start.getText()+"-"+end.getText()))
+                            {
+                                System.out.println("Time Comparison: "+help[2]+" 2nd Time "+start.getText()+"-"+end.getText());
+                                flag = false;
+                            }
+                        }
+                    }
+                }
+                if ( flag )
+                {
+                    elements.add(r.get(i));
+                }
+            }
+            my_room.setCellValueFactory(new PropertyValueFactory<Room, String>("RoomNo"));
+            my_room.setStyle("-fx-alignment: CENTER;");
+            my_capacity.setCellValueFactory(new PropertyValueFactory<Room, String>("Capacity"));
+            my_capacity.setStyle("-fx-alignment: CENTER;");
+            my_room_table.setItems(elements);
+        }
+    }
+    // This method is used to book room.
     @FXML
     public void Submit_room(ActionEvent event) throws IOException, ClassNotFoundException
     {
-        Institute iiitd = App.deserialize();
-        Room r = iiitd.SearchRoom(room_menu.getValue());
-        Student u = (Student)iiitd.getUser(user.getId());
+        Room r = null;
+        if ( room_menu.getValue().equals("Nil") && my_room_table.getSelectionModel().getSelectedItem() == null )
+        {
+            Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("Error");
+            a.setHeaderText("Room not selected");
+            a.setResizable(false);
+            String content = String.format("Please select room from table");
+            a.setContentText(content);
+            a.showAndWait();
+        }
+        else
+        {
+            Institute iiitd = App.deserialize();
+            if ( room_menu.getValue().equals("Nil") && my_room_table.getSelectionModel().getSelectedItem() != null )
+            {
+                r = iiitd.SearchRoom(my_room_table.getSelectionModel().getSelectedItem().getRoomNo());
+            }
+            else
+            {
+                r = iiitd.SearchRoom(room_menu.getValue());
+            }
+     
+            Student u = (Student)iiitd.getUser(user.getId());
 //        System.out.println("Date Picker:- " + date.getValue().toString() );
         
         int num = date.getValue().getDayOfWeek().getValue()-1;
@@ -411,7 +529,8 @@ public class StudentController implements Initializable {
             lasvegas = "Sunday";
         }
         Booking x = new Booking(r, start.getText()+"-"+end.getText(), date.getValue().toString(), lasvegas, reason.getText());
-        
+        Calendar cal = Calendar.getInstance();
+        x.setBookingDate(cal.getTime());
         boolean flag = true;
         ArrayList<String> bookings = r.getBookings();
         System.out.println("Bookings Size "+bookings.size());
@@ -456,8 +575,9 @@ public class StudentController implements Initializable {
         UpdateAvailableRoom();
         System.out.println("Total Requests: ");
         iiitd.getAdmin().printRequests();
-        
+        }
     }
+    // This method updates Timing of all room in ListView.
     public void UpdateAvailableRoom() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
@@ -552,7 +672,7 @@ public class StudentController implements Initializable {
         }
         room_availability.setItems(elements);
     }
-    
+    // This method will add Users past booking in TableView.
     public void UpdatePastBookings() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
@@ -564,13 +684,20 @@ public class StudentController implements Initializable {
             elements.add(b1);
         }
         room.setCellValueFactory(new PropertyValueFactory<Booking, String>("RoomNo"));
+        room.setStyle("-fx-alignment: CENTER;");
         datecol.setCellValueFactory(new PropertyValueFactory<Booking, String>("Date"));
+        datecol.setStyle("-fx-alignment: CENTER;");
         days.setCellValueFactory(new PropertyValueFactory<Booking, String>("Day"));
+        days.setStyle("-fx-alignment: CENTER;");
         time.setCellValueFactory(new PropertyValueFactory<Booking, String>("Time"));
+        time.setStyle("-fx-alignment: CENTER;");
         reasoncol.setCellValueFactory(new PropertyValueFactory<Booking, String>("Reason"));
+        reasoncol.setStyle("-fx-alignment: CENTER;");
         status.setCellValueFactory(new PropertyValueFactory<Booking, String>("Status"));
+        status.setStyle("-fx-alignment: CENTER;");
         past_bookings.setItems(elements);
     }
+    // This method will remove selected booking from arraylist of Request.
     @FXML
     public void Remove_button(ActionEvent event) throws IOException, ClassNotFoundException
     {
@@ -585,6 +712,7 @@ public class StudentController implements Initializable {
         UpdatePastBookings();
         UpdateAvailableRoom();
     }
+    // This method will show all available courses in Listview.
     public void ShowallCourses() throws IOException, ClassNotFoundException
     {
         ObservableList<String> elements = FXCollections.observableArrayList();
@@ -596,14 +724,40 @@ public class StudentController implements Initializable {
         }
         all_course.setItems(elements);
     }
-    
+    // This method will Reject all unanswered Requests after 5days of making request.
+    public void AutoReject() throws IOException, ClassNotFoundException, ParseException
+    {
+        Institute iiitd = App.deserialize();
+        ArrayList<Booking> bookings = iiitd.getAdmin().getRequests();
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        Date one = cal.getTime();
+        for ( int i=0; i<bookings.size(); i++ )
+        {
+            if ( bookings.get(i).getStatus().equals("Pending") )
+            {
+                Date two = bookings.get(i).getBookingDate();
+                long difference =  (one.getTime()-two.getTime())/86400000;
+//                System.out.println(Math.abs(difference));
+                if ( Math.abs(difference) > 5 )
+                {
+                    bookings.get(i).Reject();
+                    Room r = iiitd.SearchRoom(bookings.get(i).getRoomNo());
+                    r.deleteBooking(bookings.get(i).getDate()+"\t"+bookings.get(i).getDay()+"\t"+bookings.get(i).getTime());
+                    System.out.println("Booking Auto Rejected: "+bookings.get(i));
+                }
+            }
+        }
+        App.serialize(iiitd);
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         user = (Student)LoginController.currentUser;
-        room_menu.setValue("C01");
-        room_menu.getItems().addAll("C01", "C02", "C03", "C11", "C12", "C13", "C21", "C22", "C23","C24");
+        room_menu.setValue("Nil");
+        room_menu.getItems().addAll("Nil","C01", "C02", "C03", "C11", "C12", "C13", "C21", "C22", "C23","C24");
         try {
+            AutoReject();
             addItems();
             ShowallCourses();
             UpdateTable("");
@@ -613,6 +767,8 @@ public class StudentController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Add items done");

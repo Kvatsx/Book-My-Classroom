@@ -53,6 +53,7 @@ public class Student extends User {
     {
         mytimetable.addCourse(c);
     }
+    // Check if the course is new or not. Used for Search Course algorithm.
     public boolean isNewCourse(Course c)
     {
         ArrayList<Course> a = mytimetable.getCourse();
@@ -65,6 +66,9 @@ public class Student extends User {
         }
         return true;
     }
+    /*
+    This methods removes booking objects that are made by Student.
+    */
     public void RemoveRequest(Booking e)
     {
         for ( int i=0; i<bookings.size(); i++ )

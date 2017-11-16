@@ -13,6 +13,7 @@ import MyExceptions.*;
  * @author Kaustav Vats (2016048)
  */
 public class Institute implements Serializable {
+    // these will store data about my users.
     private final Admin admin;
     private ArrayList<User> users;
     private ArrayList<Course> courses;
@@ -29,17 +30,18 @@ public class Institute implements Serializable {
     {
         return this.admin;
     }
-    public void PrintCourses()
-    {
-        System.out.println("Printing all Courses");
-        for (Course course : courses) {
-            if ( course != null )
-            {
-                System.out.println(course.getCode()+" "+course.getName());
-            }
-        }
-        System.out.println("Done");
-    }
+    // To print courses, Made for testing purpose only.
+//    public void PrintCourses()
+//    {
+//        System.out.println("Printing all Courses");
+//        for (Course course : courses) {
+//            if ( course != null )
+//            {
+//                System.out.println(course.getCode()+" "+course.getName());
+//            }
+//        }
+//        System.out.println("Done");
+//    }
     public ArrayList<Room> getRooms()
     {
         return this.rooms;
@@ -56,6 +58,7 @@ public class Institute implements Serializable {
     {
         return users.get(i);
     }
+    // Returns user with same email id.
     public User getUser(String id)
     {
         for ( int i=0; i<users.size(); i++ )
@@ -68,6 +71,7 @@ public class Institute implements Serializable {
         System.out.println("User not Found with this id: " + id + ", Null");
         return null;
     }
+    // Checks if user is a student, if a student then returns true.
     public boolean isStudent(User e)
     {
 //        System.out.println(e.getClass().getName().equals("Application.Student")+" "+e.getClass().getName());
@@ -80,6 +84,7 @@ public class Institute implements Serializable {
             return false;
         }
     }
+    // check if user is faculty or not.
     public boolean isFaculty(User e)
     {
         if ( e.getClass().getName().equals("Application.Faculty") )
@@ -91,6 +96,7 @@ public class Institute implements Serializable {
             return false;
         }
     }
+    // Checks if user is Admin or not.
     public boolean isAdmin(User e)
     {
         if ( e.getClass().getName().equals("Application.Admin") )
@@ -102,6 +108,7 @@ public class Institute implements Serializable {
             return false;
         }
     }
+    // Made for testing purpose, this gives all users ID & Name.
     public void ShowUser()
     {
         for ( int i=0; i<users.size(); i++ )
@@ -118,6 +125,7 @@ public class Institute implements Serializable {
     {
         courses.add(e);
     }
+    // Search course in all courses arraylist and return that course object if found.
     public Course SearchCourse(String name)
     {
         for ( int i=0; i<courses.size(); i++ )
@@ -130,6 +138,7 @@ public class Institute implements Serializable {
         }
         return null;
     }
+    // Search room with its room number and if found returns its object.
     public Room SearchRoom(String roomno)
     {
         for ( int i=0; i<rooms.size(); i++ )
@@ -141,6 +150,7 @@ public class Institute implements Serializable {
         }
         return null;
     }
+    // returns the index number at which user is stored. if not found then throws exception that user not found.
     public int Validate_Login(String id, String pw) throws WrongCredentials
     {
         int index = -1;
@@ -158,6 +168,7 @@ public class Institute implements Serializable {
         }
         return index;
     }
+    // Checks if user already exist with that email id and if found throws exception.
     public boolean Validate_Signup(String id) throws UserAlreadyExists
     {
         boolean Flag = true;
@@ -175,6 +186,7 @@ public class Institute implements Serializable {
         }
         return Flag;
     }
+    // This method was made just for testing purpose.
     public void printRooms()
     {
         for ( int i=0; i<rooms.size(); i++ )

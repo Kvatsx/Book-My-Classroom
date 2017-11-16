@@ -39,11 +39,6 @@ public class Admin extends User{
     {
         bookings.add(e);
     }
-    public boolean SearchBooking(String r, String d, String t)
-    {
-//        for
-        return true;
-    }
     public ArrayList<Booking> getRequests()
     {
         return this.request;
@@ -52,6 +47,9 @@ public class Admin extends User{
     {
         request.add(e);
     }
+    /*
+    This methods removes Booking object that are made by student.
+    */
     public void removeRequest(Booking e)
     {
         for ( int i=0; i<request.size(); i++ )
@@ -68,6 +66,9 @@ public class Admin extends User{
             }
         }
     }
+    /* 
+    This methods removes booking objects that are made by Admin.
+    */
     public void removeBooking(Booking e)
     {
         for ( int i=0; i<bookings.size(); i++ )
@@ -84,6 +85,9 @@ public class Admin extends User{
             }
         }
     }
+    /*
+    This method returns booking object with same details.
+    */
     public Booking getRequestCopy(Booking e)
     {
         if ( e == null )
@@ -105,6 +109,7 @@ public class Admin extends User{
         }
         return null;
     }
+    // Prints all request made by Students. Only for testing purpose.
     public void printRequests()
     {
         for ( int i=0; i<request.size(); i++ )

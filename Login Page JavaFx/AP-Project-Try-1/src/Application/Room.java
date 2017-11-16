@@ -16,14 +16,12 @@ import java.util.Comparator;
 public class Room implements Serializable {
     private final String RoomNo;
     private final int Capacity;
-//    private boolean Status; //Gives Status of room, if True ---> Room Booked, else Available.
     private ArrayList<String> bookings;
     
     public Room(String room, int cap)
     {
         this.RoomNo = room;
         this.Capacity = cap;
-//        this.Status = false;
         bookings = new ArrayList<String>();
     }
     @Override
@@ -31,18 +29,10 @@ public class Room implements Serializable {
     {
         return this.RoomNo+"\n"+this.Capacity+"\n";
     }
-//    public void Book()
-//    {
-//        this.Status = true;
-//    }
     public String getRoomNo()
     {
         return this.RoomNo;
     }
-//    public boolean getStatus()
-//    {
-//        return this.Status;
-//    }
     public int getCapacity()
     {
         return this.Capacity;
@@ -66,6 +56,10 @@ public class Room implements Serializable {
             }
         }
     }
+    /*
+    This Algo Check if both time intersect with each other or not.
+    I used this method while booking the room.
+    */
     public boolean isOverlap(String time1, String time2)
     {
         if ( time1.substring(0, 2).compareTo(time2.substring(0, 2)) <= 0 )

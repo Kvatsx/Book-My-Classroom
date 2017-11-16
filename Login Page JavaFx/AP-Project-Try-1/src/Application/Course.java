@@ -18,11 +18,9 @@ public class Course implements Serializable {
     private final String Name;
     private String Acronym;
     private String Credit;
-//    private Faculty faculty;
     private String Faculty;
     private ArrayList<String> Timings;
     private ArrayList<String> rooms;
-//    private ArrayList<String> PreConditions;
     private ArrayList<String> PostConditions;
     
     public Course(String code ,String name, String f)
@@ -32,7 +30,6 @@ public class Course implements Serializable {
         this.Faculty = f;
         this.Timings = new ArrayList<String>(7);
         this.rooms = new ArrayList<String>(7);
-//        this.PreConditions = new ArrayList<Course>();
         this.PostConditions = new ArrayList<String>();
         for ( int i=0; i<7; i++ )
         {
@@ -40,10 +37,6 @@ public class Course implements Serializable {
             rooms.add("-");
         }
     }
-//    public ArrayList<String> getrooms()
-//    {
-//        return this.rooms;
-//    }
     public void setAcronym(String e)
     {
         this.Acronym = e;
@@ -118,10 +111,6 @@ public class Course implements Serializable {
         Timings.add(day,time);
         rooms.add(day,room);
     }
-//    public void addPrecondition(Course c)
-//    {
-//        PreConditions.add(c);
-//    }
     public ArrayList<String> getPostCondition()
     {
         return this.PostConditions;

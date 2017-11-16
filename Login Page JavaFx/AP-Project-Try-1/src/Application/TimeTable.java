@@ -56,11 +56,9 @@ public class TimeTable implements Serializable {
     {
         return this.Courses;
     }
-    public boolean Search()
-    {
-        // Need to implement to search for a course on basis of time or classrooom.
-        return false;
-    }
+    /*
+    This method sorts all array according to course timings and the days.
+    */
     public void UpdateDailyArrays()
     {
         for ( int i=0; i<Courses.size(); i++ )
@@ -110,7 +108,6 @@ public class TimeTable implements Serializable {
         Collections.sort(Friday, new DateCompare());
     }
 }
-
 class DateCompare implements Comparator<String>{
     @Override
     public int compare(String e1, String e2) {

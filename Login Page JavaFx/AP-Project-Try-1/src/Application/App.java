@@ -11,6 +11,9 @@ import java.io.*;
  *
  * @author Kaustav Vats (2016048)
  */
+/*
+This is the Helper class i made to make data for user and Serialize & Deserialize the object.
+*/
 public class App {
     
     public App()
@@ -38,7 +41,7 @@ public class App {
             in.close();
         }
     }
-    
+    // Method Reads information from timetable.csv and store it in String array.
     public static ArrayList<String[]> makett()
     {
         String csvFile = "C:\\Users\\kaust\\Documents\\NetBeansProjects\\AP-Project-Try-1\\src\\Data\\timetable.csv";
@@ -75,6 +78,7 @@ public class App {
         }
         return myArr;
     }
+    // This method update timeing of room and store them in booking array that is made in room class.
     public void UpdateRoomTimings() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
@@ -123,7 +127,7 @@ public class App {
         }
         App.serialize(iiitd);
     }
-    
+    // This method make all Courses object and store them in Institute Course array.
     public void allCourse() throws IOException, ClassNotFoundException
     {
         System.out.println("Testing All courses");
@@ -144,19 +148,7 @@ public class App {
                 // use comma as separator
                 String[] courseD = line.split(cvsSplitBy,-1);
                 myArr.add(courseD);
-//                System.out.println("String length = "+courseD.length);
                 Course c = new Course(courseD[0],courseD[1],courseD[2]);
-//                System.out.println(courseD[0]+" "+courseD[1]+" "+courseD[2]);
-                
-//                System.out.println(courseD[3]);
-//                System.out.println(courseD[4]);
-//                System.out.println(courseD[5]);
-//                System.out.println(courseD[6]);
-//                System.out.println(courseD[7]);
-//                System.out.println(courseD[8]);
-//                System.out.println(courseD[9]);
-//                System.out.println(courseD[10]);
-                
                 c.addPostCondition(courseD[3]);
                 c.addPostCondition(courseD[4]);
                 c.addPostCondition(courseD[5]);
@@ -184,6 +176,7 @@ public class App {
         App.serialize(iiitd);
 //        return myArr;
     }
+    // This Method makes all room and store those objects in Institute class.
     public void makeRooms() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
@@ -202,7 +195,7 @@ public class App {
         
         App.serialize(iiitd);
     }
-    
+    // This method add timing to all the courses that are stored in Institute Course array.
     public void addtimingsinCourses() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
@@ -260,6 +253,7 @@ public class App {
         }
         App.serialize(iiitd);
     }
+    // This method is creating data for my student object.
     public void makeStudent() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
@@ -273,6 +267,7 @@ public class App {
         student.addTimeTable(tt);
         App.serialize(iiitd);
     }
+    // This method is Creating data for my Faculty object.
     public void makeFaculty() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();

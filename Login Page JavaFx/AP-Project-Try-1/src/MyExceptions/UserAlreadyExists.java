@@ -9,6 +9,7 @@ package MyExceptions;
  *
  * @author Kaustav Vats (2016048)
  */
+// Exception used if user already exists.
 public class UserAlreadyExists extends Exception {
     public UserAlreadyExists(String mssg)
     {

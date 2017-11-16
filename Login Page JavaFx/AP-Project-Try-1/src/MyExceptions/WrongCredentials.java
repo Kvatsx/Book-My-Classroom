@@ -9,6 +9,7 @@ package MyExceptions;
  *
  * @author Kaustav Vats (2016048)
  */
+// Exception used if user enter Wrong credentials.
 public class WrongCredentials extends Exception {
     public WrongCredentials(String mssg)
     {

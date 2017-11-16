@@ -68,7 +68,7 @@
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="searchcoursetable" layoutX="12.0" layoutY="110.0" prefHeight="568.0" prefWidth="1168.0">
+                        <TableView fx:id="searchcoursetable" layoutX="12.0" layoutY="110.0" prefHeight="568.0" prefWidth="1168.0" stylesheets="@table.css">
                            <columns>
                               <TableColumn fx:id="code" prefWidth="68.0" text="Code" />
                               <TableColumn fx:id="credit" prefWidth="64.0" text="Credit" />
@@ -112,52 +112,63 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <DatePicker fx:id="date" layoutX="251.0" layoutY="230.0" prefHeight="31.0" prefWidth="282.0" promptText="Pick Date" />
-                        <Label layoutX="96.0" layoutY="162.0" text="Enter Room No" textFill="#3fada8">
+                        <DatePicker fx:id="date" layoutX="252.0" layoutY="152.0" prefHeight="31.0" prefWidth="282.0" promptText="Pick Date" />
+                        <Label layoutX="66.0" layoutY="103.0" text="Enter Room No" textFill="#3fada8">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutX="96.0" layoutY="233.0" text="Enter Date" textFill="#3fada8">
+                        <Label layoutX="64.0" layoutY="152.0" text="Enter Date" textFill="#3fada8">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutX="98.0" layoutY="303.0" text="Time" textFill="#3fada8">
+                        <Label layoutX="66.0" layoutY="204.0" text="Time" textFill="#3fada8">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="start" alignment="CENTER" layoutX="250.0" layoutY="300.0" prefHeight="31.0" prefWidth="120.0" promptText="00:00" />
-                        <Label layoutX="98.0" layoutY="379.0" text="Reason" textFill="#3fada8">
+                        <TextField fx:id="start" alignment="CENTER" layoutX="250.0" layoutY="201.0" prefHeight="31.0" prefWidth="120.0" promptText="00:00" />
+                        <Label layoutX="63.0" layoutY="245.0" text="Reason" textFill="#3fada8">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="reason" layoutX="250.0" layoutY="379.0" prefHeight="145.0" prefWidth="286.0" promptText="Enter Reason for Booking" />
-                        <Label layoutX="92.0" layoutY="57.0" text="Enter details for room booking" textFill="#eb2929">
+                        <TextArea fx:id="reason" layoutX="250.0" layoutY="252.0" prefHeight="145.0" prefWidth="286.0" promptText="Enter Reason for Booking" />
+                        <Label layoutX="67.0" layoutY="40.0" text="Enter details for room booking" textFill="#eb2929">
                            <font>
                               <Font name="System Bold" size="23.0" />
                            </font>
                         </Label>
-                        <Button fx:id="book_room" layoutX="334.0" layoutY="560.0" mnemonicParsing="false" onAction="#Submit_room" text="Book Room" textFill="#3fada8">
+                        <Button fx:id="Search_room" layoutX="62.0" layoutY="298.0" mnemonicParsing="false" onAction="#UpdateRoomCapacity" text="Search Room" textFill="#3fada8">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Button>
-                        <ChoiceBox fx:id="room_menu" layoutX="251.0" layoutY="160.0" prefHeight="31.0" prefWidth="282.0" />
+                        <ChoiceBox fx:id="room_menu" layoutX="252.0" layoutY="101.0" prefHeight="31.0" prefWidth="282.0" />
                         <Label fx:id="room_not_available" layoutX="92.0" layoutY="568.0" prefHeight="38.0" prefWidth="209.0" text="Room Not Available" textFill="#e80808" visible="false">
                            <font>
                               <Font name="Nirmala UI Bold" size="22.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="end" alignment="CENTER" layoutX="401.0" layoutY="301.0" prefHeight="31.0" prefWidth="135.0" promptText="23:59" />
-                        <ListView fx:id="room_availability" layoutX="597.0" layoutY="116.0" prefHeight="535.0" prefWidth="551.0" />
-                        <Label layoutX="597.0" layoutY="57.0" text="Room Availability" textFill="#eb2929">
+                        <TextField fx:id="end" alignment="CENTER" layoutX="401.0" layoutY="201.0" prefHeight="31.0" prefWidth="135.0" promptText="23:59" />
+                        <ListView fx:id="room_availability" layoutX="597.0" layoutY="101.0" prefHeight="550.0" prefWidth="551.0" />
+                        <Label layoutX="597.0" layoutY="40.0" text="Room Availability" textFill="#eb2929">
                            <font>
                               <Font name="System Bold" size="23.0" />
                            </font>
                         </Label>
+                        <TableView fx:id="my_room_table" layoutX="52.0" layoutY="436.0" prefHeight="200.0" prefWidth="500.0">
+                          <columns>
+                            <TableColumn fx:id="my_room" prefWidth="250.0" text="Room No" />
+                            <TableColumn fx:id="my_capacity" prefWidth="249.0" text="Capacity" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="book_room" layoutX="62.0" layoutY="357.0" mnemonicParsing="false" onAction="#Submit_room" prefHeight="38.0" prefWidth="128.0" text="Book Room" textFill="#3fada8">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </content>

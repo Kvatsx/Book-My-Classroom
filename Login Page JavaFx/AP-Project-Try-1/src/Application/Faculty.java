@@ -39,6 +39,9 @@ public class Faculty extends User {
     {
         RemoveRequest(booking);
     }
+    /*
+    This methods removes booking objects that are made by Faculty.
+    */
     public void RemoveRequest(Booking e)
     {
         for ( int i=0; i<bookings.size(); i++ )

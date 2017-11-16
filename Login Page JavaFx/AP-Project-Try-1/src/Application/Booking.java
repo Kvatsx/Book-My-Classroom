@@ -6,6 +6,7 @@
 package Application;
 
 import java.io.*;
+import java.util.Date;
 /**
  *
  * @author Kaustav Vats (2016048)
@@ -17,6 +18,7 @@ public class Booking implements Serializable {
     private String Day;
     private String Reason;
     private String Status;
+    private Date BookingDate;
     
     public Booking(Room r, String t, String d, String day, String rea)
     {
@@ -26,6 +28,15 @@ public class Booking implements Serializable {
         this.Day = day;
         this.Reason = rea;
         this.Status = "Pending";
+        this.BookingDate = null;
+    }
+    public Date getBookingDate()
+    {
+        return this.BookingDate;
+    }
+    public void setBookingDate(Date d)
+    {
+        this.BookingDate = d;
     }
     public String getStatus()
     {
@@ -55,19 +66,16 @@ public class Booking implements Serializable {
     {
         return this.Reason;
     }
+    // Update the status of room as booked.
     public void Book()
     {
         this.Status = "Booked";
     }
+    // Update the status of room as Rejected.
     public void Reject()
     {
         this.Status = "Rejected";
     }
-//    public int getDay()
-//    {
-//        String day = Date.substring(0, 2);
-//        return Integer.parseInt(day);
-//    }
     public int getMonth()
     {
         String month = Date.substring(3, 5);
@@ -80,6 +88,6 @@ public class Booking implements Serializable {
     }
     public String toString()
     {
-        return "Room: "+room.getRoomNo()+"\n"+"Time: "+time+"\n"+"Date: "+Date+"\n"+"Reason: "+Reason+"\n"+"Status: "+Status+"\n";
+        return "Room: "+room.getRoomNo()+"\n"+"Time: "+time+"\n"+"Date: "+Date+"\n"+"Reason: "+Reason+"\n"+"Status: "+Status+"\n"+"Booking Date: "+BookingDate.toString();
     }
 }
