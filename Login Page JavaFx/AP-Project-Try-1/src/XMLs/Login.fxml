@@ -32,16 +32,21 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="Login" alignment="CENTER" contentDisplay="CENTER" layoutX="1071.0" layoutY="343.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="31.0" prefWidth="133.0" text="Login" textAlignment="CENTER" textFill="#3fada8">
+      <TextField fx:id="Id2" alignment="CENTER" layoutX="1004.0" layoutY="220.0" prefHeight="31.0" prefWidth="267.0" promptText="Username" style="-fx-border-color: black;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="Pw2" alignment="CENTER" layoutX="1004.0" layoutY="271.0" prefHeight="31.0" prefWidth="267.0" promptText="Password" style="-fx-border-color: black;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></PasswordField>
+      <Button fx:id="Login" alignment="CENTER" contentDisplay="CENTER" layoutX="1065.0" layoutY="333.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="37.0" prefWidth="146.0" style="-fx-background-color: #3fada8;" text="Login" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <PasswordField fx:id="Pw2" alignment="CENTER" layoutX="1004.0" layoutY="271.0" prefHeight="31.0" prefWidth="267.0" promptText="Password">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></PasswordField>
-      <Label fx:id="Exc2" alignment="CENTER" layoutX="992.0" layoutY="172.0" prefHeight="31.0" prefWidth="291.0" style="-fx-background-color: White;" text="Login failed wrong user credentials." textFill="#f20606" visible="false">
+      <Label fx:id="Exc2" alignment="CENTER" layoutX="992.0" layoutY="172.0" prefHeight="31.0" prefWidth="291.0" style="-fx-background-color: transparent;" text="Login failed wrong user credentials." textFill="#f20606" visible="false">
          <font>
             <Font name="Sitka Text Bold Italic" size="16.0" />
          </font>
@@ -53,22 +58,22 @@
       </ImageView>
       <AnchorPane layoutX="31.0" layoutY="163.0" opacity="0.96" prefHeight="312.0" prefWidth="491.0" style="-fx-background-color: white;">
          <children>
-            <TextField fx:id="Name" alignment="CENTER" layoutX="190.0" layoutY="31.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter Your Full Name">
+            <TextField fx:id="Name" alignment="CENTER" layoutX="190.0" layoutY="31.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter Your Full Name" style="-fx-background-color: transparent; -fx-border-color: black;">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="Id1" alignment="CENTER" layoutX="190.0" layoutY="78.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter IIITD Email-ID">
+            <TextField fx:id="Id1" alignment="CENTER" layoutX="190.0" layoutY="78.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter IIITD Email-ID" style="-fx-background-color: transparent; -fx-border-color: black;">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="Pw1" alignment="CENTER" layoutX="190.0" layoutY="127.0" prefHeight="31.0" prefWidth="267.0" promptText="*******************">
+            <PasswordField fx:id="Pw1" alignment="CENTER" layoutX="190.0" layoutY="127.0" prefHeight="31.0" prefWidth="267.0" promptText="*******************" style="-fx-background-color: transparent; -fx-border-color: black;">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </PasswordField>
-            <RadioButton fx:id="Admin" layoutX="190.0" layoutY="178.0" mnemonicParsing="false" text="Admin" textFill="#4d4d4d">
+            <RadioButton fx:id="Admin" layoutX="190.0" layoutY="178.0" mnemonicParsing="false" text="Admin" textFill="#5e5e5e">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -106,7 +111,7 @@
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="CreateAccount" alignment="CENTER" layoutX="253.0" layoutY="255.0" mnemonicParsing="false" onAction="#CreateAccount" prefHeight="31.0" prefWidth="133.0" text="Create Account" textFill="#3fada8">
+            <Button fx:id="CreateAccount" alignment="CENTER" layoutX="240.0" layoutY="255.0" mnemonicParsing="false" onAction="#CreateAccount" prefHeight="43.0" prefWidth="138.0" style="-fx-background-color: #3fada8;" text="Create Account" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -121,10 +126,5 @@
             <DropShadow color="#208a84" height="36.55" radius="17.775" spread="0.12" width="36.55" />
          </effect>
       </AnchorPane>
-      <TextField fx:id="Id2" alignment="CENTER" layoutX="1004.0" layoutY="220.0" prefHeight="31.0" prefWidth="267.0" promptText="Username">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </TextField>
    </children>
 </AnchorPane>

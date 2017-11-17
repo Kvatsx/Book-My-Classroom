@@ -121,7 +121,7 @@ public class FacultyController implements Initializable {
 //        ObservableList<String> elements = FXCollections.observableArrayList();
         
         Label monday = new Label("Monday");
-        monday.setFont(new Font("Tahoma", 18));
+        monday.setFont(new Font("Tahoma", 19));
         monday.setTextFill(Color.web("#3fada8"));
         monday.setMinWidth(105);
 //        monday.setMaxWidth(40);
@@ -129,7 +129,7 @@ public class FacultyController implements Initializable {
         hbox1.setPadding(new Insets(1));
         
         Label tuesday = new Label("Tuesday");
-        tuesday.setFont(new Font("Tahoma", 18));
+        tuesday.setFont(new Font("Tahoma", 19));
         tuesday.setTextFill(Color.web("#3fada8"));
         tuesday.setMinWidth(105);
 //        monday.setMaxWidth(40);
@@ -137,7 +137,7 @@ public class FacultyController implements Initializable {
         hbox2.setPadding(new Insets(1));
         
         Label wednesday = new Label("Wednesday");
-        wednesday.setFont(new Font("Tahoma", 18));
+        wednesday.setFont(new Font("Tahoma", 19));
         wednesday.setTextFill(Color.web("#3fada8"));
         wednesday.setMinWidth(105);
 //        monday.setMaxWidth(40);
@@ -145,7 +145,7 @@ public class FacultyController implements Initializable {
         hbox3.setPadding(new Insets(1));
         
         Label thursday = new Label("Thursday");
-        thursday.setFont(new Font("Tahoma", 18));
+        thursday.setFont(new Font("Tahoma", 19));
         thursday.setTextFill(Color.web("#3fada8"));
         thursday.setMinWidth(105);
 //        monday.setMaxWidth(40);
@@ -153,7 +153,7 @@ public class FacultyController implements Initializable {
         hbox4.setPadding(new Insets(1));
         
         Label friday = new Label("Friday");
-        friday.setFont(new Font("Tahoma", 18));
+        friday.setFont(new Font("Tahoma", 19));
         friday.setTextFill(Color.web("#3fada8"));
         friday.setMinWidth(105);
 //        monday.setMaxWidth(40);
@@ -349,6 +349,7 @@ public class FacultyController implements Initializable {
             lasvegas = "Sunday";
         }
         Booking x = new Booking(r, start.getText()+"-"+end.getText(), date.getValue().toString(), lasvegas, reason.getText());
+        x.setID(user.getId());
         Calendar cal = Calendar.getInstance();
         x.setBookingDate(cal.getTime());
         boolean flag = true;

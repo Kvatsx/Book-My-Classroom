@@ -19,6 +19,7 @@ public class Booking implements Serializable {
     private String Reason;
     private String Status;
     private Date BookingDate;
+    private String ID;
     
     public Booking(Room r, String t, String d, String day, String rea)
     {
@@ -29,6 +30,15 @@ public class Booking implements Serializable {
         this.Reason = rea;
         this.Status = "Pending";
         this.BookingDate = null;
+        this.ID = null;
+    }
+    public void setID(String s)
+    {
+        this.ID = s;
+    }
+    public String getID()
+    {
+        return this.ID;
     }
     public Date getBookingDate()
     {

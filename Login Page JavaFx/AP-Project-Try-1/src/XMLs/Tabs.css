@@ -11,16 +11,51 @@ and open the template in the editor.
 /*.tab{
 -fx-background-color:   pink;}*/
 
-.tab:hover{
+/*.tab:hover{
 -fx-background-color:   #3fada8;}
 
 .tab:selected{
--fx-background-color:   #3fada8;}
+-fx-background-color:   #3fada8;}*/
 
 /*.tab *.tab-label {
     -fx-rotate: 90;
 }*/
 
-.tab {
+/*.tab {
     -fx-padding: 3em 0.5em 3em 0.5em;
+}*/
+/*yoyo*/
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+/*.tab-pane
+{
+    -fx-tab-min-width:90px;
+}*/
+
+/*.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+}*/
+.tab-pane .tab
+{
+    -fx-background-color: transparent;
+
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #3fada8;
+}
+
+.tab .tab-label { 
+    -fx-alignment: center-left;
+    -fx-text-fill: #3fada8;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: center-left;
+    -fx-text-fill: #ffffff;
 }

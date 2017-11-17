@@ -14,11 +14,20 @@ import MyExceptions.*;
  */
 public class Institute implements Serializable {
     // these will store data about my users.
+    private static Institute iiitd = null;
     private final Admin admin;
     private ArrayList<User> users;
     private ArrayList<Course> courses;
     private ArrayList<Room> rooms;
     
+    public static Institute getInstance(Admin admin)
+    {
+        if ( iiitd == null )
+        {
+            return new Institute(admin);
+        }
+        return iiitd;
+    }
     public Institute(Admin admin)
     {
         this.admin = admin;

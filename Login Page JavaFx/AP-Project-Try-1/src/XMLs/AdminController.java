@@ -159,7 +159,9 @@ public class AdminController implements Initializable {
         {
             if ( b.getStatus().equals("Pending") )
             {
+                
                 b.Book();
+                Mail.Accepted(b.getID(), b.toString());
 //                Room r = iiitd.SearchRoom(b.getRoomNo());
 //                r.addBooking(b.getDate()+"\t"+b.getDay()+"\t"+b.getTime());
             }
@@ -200,6 +202,7 @@ public class AdminController implements Initializable {
             if ( b.getStatus().equals("Pending") || b.getStatus().equals("Booked"))
             {
                 b.Reject();
+                Mail.Rejected(b.getID(), b.toString());
                 Room r = iiitd.SearchRoom(b.getRoomNo());
                 r.deleteBooking(b.getDate()+"\t"+b.getDay()+"\t"+b.getTime());
             }
