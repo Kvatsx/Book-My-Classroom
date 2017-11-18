@@ -24,11 +24,11 @@ public class Institute implements Serializable {
     {
         if ( iiitd == null )
         {
-            return new Institute(admin);
+            iiitd = new Institute(admin);
         }
         return iiitd;
     }
-    public Institute(Admin admin)
+    private Institute(Admin admin)
     {
         this.admin = admin;
         this.users = new ArrayList<User>();

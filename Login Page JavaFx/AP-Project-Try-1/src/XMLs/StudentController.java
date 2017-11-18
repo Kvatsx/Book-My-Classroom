@@ -743,6 +743,7 @@ public class StudentController implements Initializable {
 //                System.out.println(Math.abs(difference));
                 if ( Math.abs(difference) > 5 )
                 {
+                    Mail.AutoRejected(bookings.get(i).getID(), bookings.get(i).toString());
                     bookings.get(i).Reject();
                     Room r = iiitd.SearchRoom(bookings.get(i).getRoomNo());
                     r.deleteBooking(bookings.get(i).getDate()+"\t"+bookings.get(i).getDay()+"\t"+bookings.get(i).getTime());

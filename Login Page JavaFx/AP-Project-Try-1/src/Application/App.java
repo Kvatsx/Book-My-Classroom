@@ -257,7 +257,7 @@ public class App {
     public void makeStudent() throws IOException, ClassNotFoundException
     {
         Institute iiitd = App.deserialize();
-        Student student = (Student)iiitd.getUser("kaustavvats@gmail.com");
+        Student student = (Student)iiitd.getUser("kaustav16048@iiitd.ac.in");
         TimeTable tt = new TimeTable();
         tt.addCourse(iiitd.SearchCourse("Advanced Programming"));
         tt.addCourse(iiitd.SearchCourse("Discrete Mathematics"));
@@ -283,12 +283,12 @@ public class App {
         System.out.println("My App Main method called");
         App app = new App();
         Admin admin = new Admin("Admin", "admin","admin");
-//        Institute IIITD = Institute.getInstance(admin);
-        Institute IIITD = new Institute(admin);
+        Institute IIITD = Institute.getInstance(admin);
+//        Institute IIITD = new Institute(admin);
         IIITD.addUser(admin);
 //        IIITD.addUser(new Student("Ishaan","ishaan@iiitd.ac.in","ishaanbassi"));
         IIITD.addUser(new Faculty("Bhand","abhi@iiitd.ac.in","bhand"));
-        IIITD.addUser(new Student("Kaustav","kaustavvats@gmail.com","kaustav"));
+        IIITD.addUser(new Student("Kaustav","kaustav16048@iiitd.ac.in","kaustav"));
         IIITD.addUser(new Faculty("Vivek Kumar","vivekkumar","vivek"));
 //        IIITD.addUser(new Admin("Admin","admin","admin"));
         app.serialize(IIITD);
